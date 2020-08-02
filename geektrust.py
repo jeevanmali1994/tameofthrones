@@ -20,15 +20,15 @@ def main():
         communication_list.append(communication_object)
     
     #here we create the list of all allies
-    senders_ally = set()
+    senders_ally = []
     for communication_object in communication_list:
-        if(communication_object.is_valid_message()):
-            senders_ally.add(communication_object.getname())
+        if(communication_object.is_valid_message()) and communication_object.getname() not in senders_ally:
+            senders_ally.append(communication_object.getname())
     
     if len(senders_ally) >= 3:
         print(sender, end = " ")
         for ally in senders_ally:
-            print(ally.getname(), end = " ")
+            print(ally, end = " ")
     else:
         print("NONE")
     
